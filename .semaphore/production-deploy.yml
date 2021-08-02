@@ -11,7 +11,7 @@ blocks:
         - name: Docker Hub Token
       prologue:
         commands:
-          - sem-version java 11
+          - sem-version java 16
           - checkout
           - cache restore
           - cache restore docker-credential
