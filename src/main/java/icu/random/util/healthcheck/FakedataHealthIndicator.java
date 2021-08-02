@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 import lombok.extern.slf4j.Slf4j;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.actuate.health.Health;
@@ -61,7 +63,12 @@ public class FakedataHealthIndicator implements HealthIndicator {
 
     var statusCode = response.getStatus();
     var body = response.getBody();
-    var expectedBody = "{\"status\":\"UP\"}";
+    var versionPattern = Pattern.compile("(\\d+.\\d+.\\d+)");
+    var matcher = versionPattern.matcher(body);
+
+    String fakedataVersion = matcher.find() ? matcher.group() : "unknown";
+
+    var expectedBody = String.format("{\"version\":\"%s\",\"status\":\"UP\"}", fakedataVersion);
 
     log.info("Status code: {}", statusCode);
     log.info("Healthcheck response: {}", body);
