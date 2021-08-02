@@ -1,4 +1,52 @@
 ## Randomicu Changelog
+## [0.8.0](https://github.com/randomicu/randomicu/compare/0.7.0...0.8.0) (2021-08-02)
+
+
+### Bug Fixes
+
+* **healthcheck:** parse fakedata version ([5542016](https://github.com/randomicu/randomicu/commit/5542016c808ea682e7b3c1fb48a6432c048ac8c4))
+* more exact regex (sonar fixes) ([752812f](https://github.com/randomicu/randomicu/commit/752812f8401b35d7f7a5028346f46a7df46ddbfb))
+
+
+### Other
+
+* **deps:** bump browserslist from 4.8.2 to 4.16.6 ([306487e](https://github.com/randomicu/randomicu/commit/306487e2a1429e1bddfd8bb49658914b2c07a379))
+* **deps:** bump color-string from 1.5.3 to 1.5.5 ([f2956ab](https://github.com/randomicu/randomicu/commit/f2956abcf6dbde913ab8c54a9c8b3d2874f86b97))
+* **deps:** bump commons-lang3 from 3.11 to 3.12.0 ([e5cb6a8](https://github.com/randomicu/randomicu/commit/e5cb6a8a5f96ebcd49ca209207e237d705598290))
+* **deps:** bump elliptic from 6.5.3 to 6.5.4 ([6135706](https://github.com/randomicu/randomicu/commit/61357061265103a8e97b5c44303cb532f03aa686))
+* **deps:** bump git-commit-id-plugin from 4.0.2 to 4.0.3 ([c8e7103](https://github.com/randomicu/randomicu/commit/c8e7103680cc612b5b42d33c5ad3efc4d393e9ff))
+* **deps:** bump git-commit-id-plugin from 4.0.3 to 4.0.4 ([8e25056](https://github.com/randomicu/randomicu/commit/8e2505645489ad78c11e392853232feb01fea268))
+* **deps:** bump git-commit-id-plugin from 4.0.4 to 4.0.5 ([41e5d3e](https://github.com/randomicu/randomicu/commit/41e5d3e4985f64f0d61aec53795565106c8530b6))
+* **deps:** bump jib-maven-plugin from 2.6.0 to 2.7.0 ([1c8d736](https://github.com/randomicu/randomicu/commit/1c8d736d3f6b4caa619c1b23afc5416e11cbab85))
+* **deps:** bump jib-maven-plugin from 2.7.0 to 3.1.2 ([e31b1e9](https://github.com/randomicu/randomicu/commit/e31b1e948e1ddea5d7f4b392b3f781b461b647f8))
+* **deps:** bump lodash from 4.17.19 to 4.17.21 ([4b7d642](https://github.com/randomicu/randomicu/commit/4b7d642e2ef9e7c5d5aa55fcaf03885e1af62b24))
+* **deps:** bump spring-boot-starter-parent from 2.5.2 to 2.5.3 ([01f4095](https://github.com/randomicu/randomicu/commit/01f4095ad8a866cd640f5d87fb8c776574ac9e5b))
+* **deps:** bump unirest-java from 3.11.02 to 3.11.03 ([b126020](https://github.com/randomicu/randomicu/commit/b126020f1dfe3141afb051ad318c70ca3986042d))
+* **deps:** bump unirest-java from 3.11.03 to 3.11.05 ([ca4a22a](https://github.com/randomicu/randomicu/commit/ca4a22a62927174e2344b72ca6ce970defa6da80))
+* **deps:** bump unirest-java from 3.11.05 to 3.11.06 ([17fafba](https://github.com/randomicu/randomicu/commit/17fafba3b70709331ebac3df1284cb6ebceae415))
+* **deps:** bump unirest-java from 3.11.06 to 3.11.07 ([7bc6b56](https://github.com/randomicu/randomicu/commit/7bc6b568718d37c7049c63192be6936689f89b05))
+* **deps:** bump unirest-java from 3.11.07 to 3.11.08 ([e7e1fe6](https://github.com/randomicu/randomicu/commit/e7e1fe672a6f1123116b9349a367f5fa7483b29c))
+* **deps:** bump unirest-java from 3.11.08 to 3.11.09 ([9d2475b](https://github.com/randomicu/randomicu/commit/9d2475b154f8675b227d55abac5cefbcee680383))
+* **deps:** bump unirest-java from 3.11.09 to 3.11.10 ([93cd8c9](https://github.com/randomicu/randomicu/commit/93cd8c987acf9fe993644b5d10be607dfc4cc4ad))
+* **deps:** bump unirest-java from 3.11.10 to 3.11.11 ([1ca87f5](https://github.com/randomicu/randomicu/commit/1ca87f5bb09026b8ac7cf1c731427a408e8717bb))
+* **deps:** bump unirest-java from 3.11.11 to 3.11.12 ([a01b7f7](https://github.com/randomicu/randomicu/commit/a01b7f71167714e0d96718b4e1ffa702afb8beb3))
+* **deps:** bump ws from 5.2.2 to 5.2.3 ([e6669c0](https://github.com/randomicu/randomicu/commit/e6669c0ecbd76d1848f0e5cc171d27c736a93ae3))
+* **deps:** bump y18n from 4.0.0 to 4.0.1 ([4213680](https://github.com/randomicu/randomicu/commit/4213680639694f883436fdb0793c150bb5aa7a98))
+* **dev:** add sdkman java 16 ([c7e7e93](https://github.com/randomicu/randomicu/commit/c7e7e93ac7d33c0d973dece756bd9d2084cfae47))
+* **dev:** bump deps to build on 16 ([1279805](https://github.com/randomicu/randomicu/commit/1279805f4df6f008e35519bec7a749d812e7bc57)), closes [#191](https://github.com/randomicu/randomicu/issues/191)
+* **dev:** up node version in .nvmrc for development ([a8a91e3](https://github.com/randomicu/randomicu/commit/a8a91e33eeca59ae548641cfc9e51d37e903bcef))
+* **dev:** up parcel to v2 ([52dbbc5](https://github.com/randomicu/randomicu/commit/52dbbc5078eb6ea12f8201eac0c539506c70f4ae))
+* **package:** remove pythoninja references ([27668d5](https://github.com/randomicu/randomicu/commit/27668d5ed5f410fc97a92cf0f50e176d8bed69e7))
+* **security:** add sonarcloud gh actions ([9b20dd5](https://github.com/randomicu/randomicu/commit/9b20dd509f6a2c2f2bd2bde07691ca7901ba7915))
+* **security:** add sonarcloud to pom.xml ([4c6d296](https://github.com/randomicu/randomicu/commit/4c6d296311efa0b0b5f10befd4eeda037524b629))
+
+
+### Refactoring
+
+* **healthcheck:** add @Notnull to isRunning() and dependency ([bc67f0c](https://github.com/randomicu/randomicu/commit/bc67f0c45605916b20798adeb61f90f8e4535c4c))
+* image build with java 16 ([75c8ec7](https://github.com/randomicu/randomicu/commit/75c8ec78d9b6b7c789a87c828148f4ced4eb47d4))
+* replace purecss full path with `~` ([29a9b8e](https://github.com/randomicu/randomicu/commit/29a9b8e6505e3c420adb34222433963072d12467)), closes [#202](https://github.com/randomicu/randomicu/issues/202)
+
 ## [0.7.0](https://github.com/pythoninja/randomicu/compare/0.6.1...0.7.0) (2020-11-01)
 
 
