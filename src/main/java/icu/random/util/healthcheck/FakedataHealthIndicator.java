@@ -64,10 +64,10 @@ public class FakedataHealthIndicator implements HealthIndicator {
 
     var statusCode = response.getStatus();
     var body = response.getBody();
-    var versionPattern = Pattern.compile("(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3})");
+    var versionPattern = Pattern.compile("\"(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3})\"");
     var matcher = versionPattern.matcher(body);
 
-    String fakedataVersion = matcher.find() ? matcher.group() : "unknown";
+    String fakedataVersion = matcher.find() ? matcher.group(1) : "unknown";
     log.info("Put fakedataVersion: {} to the healthcheck details section", fakedataVersion);
     details.put("version", fakedataVersion);
 
