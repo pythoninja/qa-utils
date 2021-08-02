@@ -42,7 +42,7 @@ public class FakedataHealthIndicator implements HealthIndicator {
     if (!isRunning()) {
       return Health.down().withDetails(details).build();
     } else {
-      return Health.up().build();
+      return Health.up().withDetails(details).build();
     }
   }
 
@@ -68,7 +68,8 @@ public class FakedataHealthIndicator implements HealthIndicator {
     var matcher = versionPattern.matcher(body);
 
     String fakedataVersion = matcher.find() ? matcher.group() : "unknown";
-    log.info("fakedataVersion: {}", fakedataVersion);
+    log.info("Put fakedataVersion: {} to the healthcheck details section", fakedataVersion);
+    details.put("version", fakedataVersion);
 
     var expectedBody = String.format("{\"version\":\"%s\",\"status\":\"UP\"}", fakedataVersion);
 
