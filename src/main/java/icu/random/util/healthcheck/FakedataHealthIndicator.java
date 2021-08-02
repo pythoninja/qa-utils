@@ -46,6 +46,7 @@ public class FakedataHealthIndicator implements HealthIndicator {
     }
   }
 
+  @NotNull
   private Boolean isRunning() {
     log.debug("Trying to open socket to {}:{}", host, port);
 
