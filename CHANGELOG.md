@@ -1,4 +1,23 @@
 ## Randomicu Changelog
+### [0.8.1](https://github.com/randomicu/randomicu/compare/0.8.0...0.8.1) (2021-08-02)
+
+
+### Features
+
+* **healthcheck:** add fakedata-backend version to `/_/health` ([a23a4bd](https://github.com/randomicu/randomicu/commit/a23a4bd0d230b84bdb7a05cbec40d65179903009)), closes [#207](https://github.com/randomicu/randomicu/issues/207)
+
+
+### Other
+
+* **deps:** bump git-commit-id-plugin from 4.0.5 to 4.9.10 ([e303dd5](https://github.com/randomicu/randomicu/commit/e303dd5f969fc483753f56cacf7cb4226c50ca32))
+* **deps:** move git-commit-id-plugin to the new groupId ([5a37c21](https://github.com/randomicu/randomicu/commit/5a37c214707dec7cc6baf25cd2ec213d931ff6d9))
+
+
+### Refactoring
+
+* move `/app/healthcheck` to `/_/health` ([935e41e](https://github.com/randomicu/randomicu/commit/935e41e5cf1b4ad5d0953a9c222b9fde73a4ac88))
+* strict regex in healthcheck ([069cb37](https://github.com/randomicu/randomicu/commit/069cb37054920529ae0336216e95b1e477f39225))
+
 ## [0.8.0](https://github.com/randomicu/randomicu/compare/0.7.0...0.8.0) (2021-08-02)
 
 
