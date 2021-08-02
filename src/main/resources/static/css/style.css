@@ -1,4 +1,5 @@
-@import '../../../../../node_modules/purecss/build/base.css';
+/*noinspection CssUnknownTarget*/
+@import '~/node_modules/purecss/build/base.css';
 
 * {
     box-sizing: border-box;
