@@ -144,7 +144,7 @@
                         <goals>
                             <goal>revision</goal>
                         </goals>
-                        <phase>package</phase>
+                        <phase>initialize</phase>
                     </execution>
                     <execution>
                         <id>validate-semver-git-tag</id>
