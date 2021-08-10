@@ -1,6 +1,6 @@
 package icu.random.util;
 
-import java.util.Random;
+import java.security.SecureRandom;
 import lombok.Data;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -16,7 +16,7 @@ public class RandomSentenceGenerator {
 
   public String generate() {
 
-    Random rnd = new Random();
+    SecureRandom rnd = new SecureRandom();
     StringBuilder sentence = new StringBuilder();
 
     while (sentence.length() < symbolsCount) {
