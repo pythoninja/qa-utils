@@ -1,4 +1,27 @@
 ## Randomicu Changelog
+### [0.8.2](https://github.com/randomicu/randomicu/compare/0.8.1...0.8.2) (2021-08-10)
+
+
+### Other
+
+* **deps:** bump parcel to 2.0.0-rc.0 ([206e20c](https://github.com/randomicu/randomicu/commit/206e20c2c3244d113a0c1b4240599d813cf263a9))
+
+
+### Refactoring
+
+* add private constuctor to ControllerPaths ([3a6bf50](https://github.com/randomicu/randomicu/commit/3a6bf5007e98dc7694da2268ed444fb17bc03f64))
+* allow only GET method on `/` ([cf114cc](https://github.com/randomicu/randomicu/commit/cf114cca0ac5b00912974ca38a1a3f553e26cd51))
+* change Random to SecureRandom ([1631fc8](https://github.com/randomicu/randomicu/commit/1631fc8d2868be2eee1fbda431b21634a1cf7ce7))
+* change to GetMapping shortcut ([455ab18](https://github.com/randomicu/randomicu/commit/455ab180dfc6334c1ae395cf8a355937077b719e))
+* make ALLOWED_LANGUAGES static ([904bf88](https://github.com/randomicu/randomicu/commit/904bf884ecddbcba766f16d653f2a1a0d7791d2f))
+* make status final ([89cdb50](https://github.com/randomicu/randomicu/commit/89cdb50ffb153b1659803efcec60ca620edda9da))
+* more constants ([160c7c9](https://github.com/randomicu/randomicu/commit/160c7c9944ff4233a899b084eacf9bfbb82b9385))
+* move local random variable to class level ([9ed1052](https://github.com/randomicu/randomicu/commit/9ed1052c035f2274aa0af67061a2fa1c06ccdfb4))
+* new constant LIPSUM_TYPE ([556efb0](https://github.com/randomicu/randomicu/commit/556efb03d5889f44a28815f6919d61cb3a35cfb6))
+* reduce wildcards in exceptions ([ebccdde](https://github.com/randomicu/randomicu/commit/ebccdde3614acdcdce263a8bfbc3664fd057c067))
+* rename CorsConfigBean method ([4aaa19c](https://github.com/randomicu/randomicu/commit/4aaa19c814d2d3c1a402479db257a1a7091806b6))
+* use boolean primitive instead of object ([3532dd1](https://github.com/randomicu/randomicu/commit/3532dd1f3db367758da8628dc09228bbbbfb2cbf))
+
 ### [0.8.1](https://github.com/randomicu/randomicu/compare/0.8.0...0.8.1) (2021-08-02)
 
 
