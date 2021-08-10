@@ -14,12 +14,12 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 public class GeneralExceptionHandler {
 
   @ExceptionHandler
-  public ResponseEntity<?> handleHttpMediaTypeNotAcceptableException(HttpMediaTypeNotAcceptableException exc) {
+  public ResponseEntity<String> handleHttpMediaTypeNotAcceptableException(HttpMediaTypeNotAcceptableException exc) {
     return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(exc.getLocalizedMessage());
   }
 
   @ExceptionHandler
-  public ResponseEntity<?> handleHttpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException exc,
+  public ResponseEntity<Object> handleHttpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException exc,
                                                                         WebRequest request) {
 
     if (!Objects.equals(request.getHeader("Accept"), "application/json")) {
@@ -35,7 +35,7 @@ public class GeneralExceptionHandler {
   }
 
   @ExceptionHandler
-  public ResponseEntity<?> handleMethodArgumentTypeMismatch(MethodArgumentTypeMismatchException exc, WebRequest request) {
+  public ResponseEntity<Object> handleMethodArgumentTypeMismatch(MethodArgumentTypeMismatchException exc, WebRequest request) {
 
     if (!Objects.equals(request.getHeader("Accept"), "application/json")) {
       return ResponseEntity.status(HttpStatus.BAD_REQUEST)
@@ -57,7 +57,7 @@ public class GeneralExceptionHandler {
   }
 
   @ExceptionHandler(IncorrectLanguageException.class)
-  public ResponseEntity<?> handleIncorrectLanguageException(IncorrectLanguageException exc) {
+  public ResponseEntity<GeneralException> handleIncorrectLanguageException(IncorrectLanguageException exc) {
 
     GeneralException response = new GeneralException(
         HttpStatus.BAD_REQUEST.value(),
@@ -68,7 +68,7 @@ public class GeneralExceptionHandler {
   }
 
   @ExceptionHandler(HttpClientFailureException.class)
-  public ResponseEntity<?> handleHttpClientFailureException(HttpClientFailureException exc) {
+  public ResponseEntity<GeneralException> handleHttpClientFailureException(HttpClientFailureException exc) {
 
     HttpStatus status = exc.getStatus();
 
