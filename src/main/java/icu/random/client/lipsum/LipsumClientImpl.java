@@ -16,6 +16,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class LipsumClientImpl implements LipsumClient {
 
+  public static final String LIPSUM_TYPE = "lipsumType";
+
   private final RestClient restClient;
 
   @Value("${randomicu.external.lipsum.remote-url}")
@@ -28,7 +30,7 @@ public class LipsumClientImpl implements LipsumClient {
 
   @Override
   public HttpResponse<LipsumDto> getBytes(int amount, boolean startWithLorem) {
-    Map<String, Object> params = Map.of("lipsumType", "bytes",
+    Map<String, Object> params = Map.of(LIPSUM_TYPE, "bytes",
         "amount", amount,
         "startWithLorem", startWithLorem ? "yes" : "no");
 
@@ -38,7 +40,7 @@ public class LipsumClientImpl implements LipsumClient {
 
   @Override
   public HttpResponse<LipsumDto> getParagraphs(int amount, boolean startWithLorem) {
-    Map<String, Object> params = Map.of("lipsumType", "paras",
+    Map<String, Object> params = Map.of(LIPSUM_TYPE, "paras",
         "amount", amount,
         "startWithLorem", startWithLorem ? "yes" : "no");
 
@@ -48,7 +50,7 @@ public class LipsumClientImpl implements LipsumClient {
 
   @Override
   public HttpResponse<LipsumDto> getWords(int amount, boolean startWithLorem) {
-    Map<String, Object> params = Map.of("lipsumType", "words",
+    Map<String, Object> params = Map.of(LIPSUM_TYPE, "words",
         "amount", amount,
         "startWithLorem", startWithLorem ? "yes" : "no");
 
@@ -58,7 +60,7 @@ public class LipsumClientImpl implements LipsumClient {
 
   @Override
   public HttpResponse<LipsumDto> getLists(int amount, boolean startWithLorem) {
-    Map<String, Object> params = Map.of("lipsumType", "lists",
+    Map<String, Object> params = Map.of(LIPSUM_TYPE, "lists",
         "amount", amount,
         "startWithLorem", startWithLorem ? "yes" : "no");
 
