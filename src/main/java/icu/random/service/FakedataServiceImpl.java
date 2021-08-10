@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class FakedataServiceImpl implements FakedataService {
 
-  private final Set<String> ALLOWED_LANGUAGES = Set.of("ru", "en");
+  private static final Set<String> ALLOWED_LANGUAGES = Set.of("ru", "en");
   private final FakedataClient client;
 
   @Autowired
