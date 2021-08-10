@@ -8,7 +8,7 @@ import org.springframework.http.HttpStatus;
 @Getter
 public class HttpClientFailureException extends RuntimeException {
 
-  private HttpStatus status;
+  private final HttpStatus status;
 
   public HttpClientFailureException(String message, HttpStatus status) {
     super(message);
