@@ -15,7 +15,7 @@ public class CorsConfig {
 
   @Bean
   @Order(Ordered.HIGHEST_PRECEDENCE)
-  public FilterRegistrationBean<CorsFilter> CorsConfigBean() {
+  public FilterRegistrationBean<CorsFilter> corsConfigBean() {
 
     var config = new CorsConfiguration();
     config.setAllowCredentials(true);
