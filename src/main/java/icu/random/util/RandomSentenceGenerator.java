@@ -13,10 +13,10 @@ public class RandomSentenceGenerator {
   private Integer minWordLength;
   private Integer maxWordLength;
   private boolean paragraphsEnabled;
+  private SecureRandom rand = new SecureRandom();
 
   public String generate() {
 
-    SecureRandom rnd = new SecureRandom();
     StringBuilder sentence = new StringBuilder();
 
     while (sentence.length() < symbolsCount) {
@@ -28,10 +28,10 @@ public class RandomSentenceGenerator {
 
       sentence.append(word);
 
-      if (rnd.nextDouble() < 0.1) {
+      if (rand.nextDouble() < 0.1) {
         sentence.append(".");
 
-        if (paragraphsEnabled && symbolsCount >= 500 && rnd.nextDouble() < 0.2) {
+        if (paragraphsEnabled && symbolsCount >= 500 && rand.nextDouble() < 0.2) {
           sentence.append("\n\n");
         }
       }
