@@ -17,6 +17,8 @@ import org.springframework.stereotype.Component;
 public class LipsumClientImpl implements LipsumClient {
 
   public static final String LIPSUM_TYPE = "lipsumType";
+  public static final String AMOUNT = "amount";
+  public static final String START_WITH_LOREM = "startWithLorem";
 
   private final RestClient restClient;
 
@@ -31,8 +33,8 @@ public class LipsumClientImpl implements LipsumClient {
   @Override
   public HttpResponse<LipsumDto> getBytes(int amount, boolean startWithLorem) {
     Map<String, Object> params = Map.of(LIPSUM_TYPE, "bytes",
-        "amount", amount,
-        "startWithLorem", startWithLorem ? "yes" : "no");
+        AMOUNT, amount,
+        START_WITH_LOREM, startWithLorem ? "yes" : "no");
 
     log.info("Params for request (getBytes): {}", params);
     return this.getResponse(params);
@@ -41,8 +43,8 @@ public class LipsumClientImpl implements LipsumClient {
   @Override
   public HttpResponse<LipsumDto> getParagraphs(int amount, boolean startWithLorem) {
     Map<String, Object> params = Map.of(LIPSUM_TYPE, "paras",
-        "amount", amount,
-        "startWithLorem", startWithLorem ? "yes" : "no");
+        AMOUNT, amount,
+        START_WITH_LOREM, startWithLorem ? "yes" : "no");
 
     log.info("Params for request (getParagraphs): {}", params);
     return this.getResponse(params);
@@ -51,8 +53,8 @@ public class LipsumClientImpl implements LipsumClient {
   @Override
   public HttpResponse<LipsumDto> getWords(int amount, boolean startWithLorem) {
     Map<String, Object> params = Map.of(LIPSUM_TYPE, "words",
-        "amount", amount,
-        "startWithLorem", startWithLorem ? "yes" : "no");
+        AMOUNT, amount,
+        START_WITH_LOREM, startWithLorem ? "yes" : "no");
 
     log.info("Params for request (getWords): {}", params);
     return this.getResponse(params);
@@ -61,8 +63,8 @@ public class LipsumClientImpl implements LipsumClient {
   @Override
   public HttpResponse<LipsumDto> getLists(int amount, boolean startWithLorem) {
     Map<String, Object> params = Map.of(LIPSUM_TYPE, "lists",
-        "amount", amount,
-        "startWithLorem", startWithLorem ? "yes" : "no");
+        AMOUNT, amount,
+        START_WITH_LOREM, startWithLorem ? "yes" : "no");
 
     log.info("Params for request (getLists): {}", params);
     return this.getResponse(params);
