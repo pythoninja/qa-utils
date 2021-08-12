@@ -34,49 +34,47 @@ public class LipsumServiceImpl implements LipsumService {
   }
 
   @Override
-  public HttpResponse<LipsumDto> getBytes(Integer amount, boolean startWithLorem) {
+  public LipsumDto getBytes(Integer amount, boolean startWithLorem) {
     var count = amount == null ? defaultLipsumBytesCount : amount;
 
     eventSender.send(EventType.lorem_bytes);
 
-    return client.getBytes(count, startWithLorem);
+    return client.getBytes(count, startWithLorem).getBody();
   }
 
   @Override
-  public HttpResponse<LipsumDto> getParagraphs(Integer amount, boolean startWithLorem) {
+  public LipsumDto getParagraphs(Integer amount, boolean startWithLorem, boolean additionalBreak) {
     var count = amount == null ? defaultLipsumParagraphsCount : amount;
+
+    if (additionalBreak) {
+      var paragraphs = client.getParagraphs(count, startWithLorem);
+      eventSender.send(EventType.lorem_paragraphs_break);
+
+      return insertAdditionalBreakTo(paragraphs);
+    }
 
     eventSender.send(EventType.lorem_paragraphs);
 
-    return client.getParagraphs(count, startWithLorem);
+    return client.getParagraphs(count, startWithLorem).getBody();
   }
 
-  @Override
-  public LipsumDto getParagraphsWithBreak(Integer amount, boolean startWithLorem, boolean additionalBreak) {
-    var count = amount == null ? defaultLipsumParagraphsCount : amount;
-    var paragraphs = client.getParagraphs(count, startWithLorem);
-
-    eventSender.send(EventType.lorem_paragraphs_break);
-
-    return insertAdditionalBreakTo(paragraphs);
-  }
 
   @Override
-  public HttpResponse<LipsumDto> getWords(Integer amount, boolean startWithLorem) {
+  public LipsumDto getWords(Integer amount, boolean startWithLorem) {
     var count = amount == null ? defaultLipsumWordsCount : amount;
 
     eventSender.send(EventType.lorem_words);
 
-    return client.getWords(count, startWithLorem);
+    return client.getWords(count, startWithLorem).getBody();
   }
 
   @Override
-  public HttpResponse<LipsumDto> getLists(Integer amount, boolean startWithLorem) {
+  public LipsumDto getLists(Integer amount, boolean startWithLorem) {
     var count = amount == null ? defaultLipsumListsCount : amount;
 
     eventSender.send(EventType.lorem_lists);
 
-    return client.getLists(count, startWithLorem);
+    return client.getLists(count, startWithLorem).getBody();
   }
 
   private LipsumDto insertAdditionalBreakTo(HttpResponse<LipsumDto> response) {
@@ -87,5 +85,4 @@ public class LipsumServiceImpl implements LipsumService {
 
     return lipsumDto;
   }
-
 }

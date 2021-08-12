@@ -1,17 +1,14 @@
 package icu.random.service;
 
 import icu.random.dto.lipsum.LipsumDto;
-import kong.unirest.HttpResponse;
 
 public interface LipsumService {
 
-  HttpResponse<LipsumDto> getBytes(Integer amount, boolean startWithLorem);
+  LipsumDto getBytes(Integer amount, boolean startWithLorem);
 
-  HttpResponse<LipsumDto> getParagraphs(Integer amount, boolean startWithLorem);
+  LipsumDto getParagraphs(Integer amount, boolean startWithLorem, boolean additionalBreak);
 
-  LipsumDto getParagraphsWithBreak(Integer amount, boolean startWithLorem, boolean additionalBreak);
+  LipsumDto getWords(Integer amount, boolean startWithLorem);
 
-  HttpResponse<LipsumDto> getWords(Integer amount, boolean startWithLorem);
-
-  HttpResponse<LipsumDto> getLists(Integer amount, boolean startWithLorem);
+  LipsumDto getLists(Integer amount, boolean startWithLorem);
 }
