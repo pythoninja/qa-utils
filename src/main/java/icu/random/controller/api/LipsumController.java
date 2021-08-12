@@ -29,7 +29,7 @@ public class LipsumController {
   @GetMapping(LOREM_AS_BYTES_PATH)
   public SentenceDto bytesGenerator(@RequestParam(required = false) Integer count,
                                     @RequestParam(required = false, defaultValue = "true") boolean startWithLorem) {
-    var lipsumDto = lipsumService.getBytes(count, startWithLorem).getBody();
+    var lipsumDto = lipsumService.getBytes(count, startWithLorem);
 
     return LipsumDto.convertToSentence(lipsumDto);
   }
@@ -38,20 +38,15 @@ public class LipsumController {
   public SentenceDto paragraphsGenerator(@RequestParam(required = false) Integer count,
                                          @RequestParam(required = false, defaultValue = "true") boolean startWithLorem,
                                          @RequestParam(required = false, defaultValue = "true") boolean additionalBreak) {
-    LipsumDto lipsumDto;
+    var lipsumDto = lipsumService.getParagraphs(count, startWithLorem, additionalBreak);
 
-    if (additionalBreak) {
-      lipsumDto = lipsumService.getParagraphsWithBreak(count, startWithLorem, true);
-    } else {
-      lipsumDto = lipsumService.getParagraphs(count, startWithLorem).getBody();
-    }
     return LipsumDto.convertToSentence(lipsumDto);
   }
 
   @GetMapping(LOREM_AS_WORDS_PATH)
   public SentenceDto wordsGenerator(@RequestParam(required = false) Integer count,
                                     @RequestParam(required = false, defaultValue = "true") boolean startWithLorem) {
-    var lipsumDto = lipsumService.getWords(count, startWithLorem).getBody();
+    var lipsumDto = lipsumService.getWords(count, startWithLorem);
 
     return LipsumDto.convertToSentence(lipsumDto);
   }
@@ -59,7 +54,7 @@ public class LipsumController {
   @GetMapping(LOREM_AS_LISTS_PATH)
   public SentenceDto listsGenerator(@RequestParam(required = false) Integer count,
                                     @RequestParam(required = false, defaultValue = "true") boolean startWithLorem) {
-    var lipsumDto = lipsumService.getLists(count, startWithLorem).getBody();
+    var lipsumDto = lipsumService.getLists(count, startWithLorem);
 
     return LipsumDto.convertToSentence(lipsumDto);
   }
