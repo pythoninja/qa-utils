@@ -10,7 +10,7 @@ import org.springframework.http.MediaType;
 @Configuration
 public class UnirestConfiguration {
 
-  private static final int CONNECT_TIMEOUT_MS = 1000;
+  private static final int CONNECT_TIMEOUT_MS = 2000;
   private static final int SOCKET_TIMEOUT_MS = 2000;
 
   @PostConstruct
