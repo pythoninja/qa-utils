@@ -1,4 +1,26 @@
 ## Randomicu Changelog
+### [0.8.3](https://github.com/randomicu/randomicu/compare/0.8.2...0.8.3) (2021-08-14)
+
+
+### Features
+
+* add new /uuid endpoint ([5635e8d](https://github.com/randomicu/randomicu/commit/5635e8dc10b35856930687f7721b381ab07bf71a))
+
+
+### Refactoring
+
+* move additionalBreak into service layer ([397c98f](https://github.com/randomicu/randomicu/commit/397c98f7dd910beb219ec47dec380d91666e9dc9)), closes [#200](https://github.com/randomicu/randomicu/issues/200)
+* replace lombok data with explicit annotations ([7e2731a](https://github.com/randomicu/randomicu/commit/7e2731a8079a1e60750f79da482c603d5a3d85ec))
+* replace route params with constants ([8811670](https://github.com/randomicu/randomicu/commit/88116708af68af394f51b186f36195cfd181a6d0))
+
+
+### Other
+
+* **deps:** bump annotations from 21.0.1 to 22.0.0 ([f43a65b](https://github.com/randomicu/randomicu/commit/f43a65b3c897fa55d64fa49e4eba686672beba3b))
+* **deps:** bump deps in package-lock.json ([98282a5](https://github.com/randomicu/randomicu/commit/98282a51bfeec0367722b18fb963cdb3510e8be5))
+* **deps:** bump jib-maven-plugin from 3.1.2 to 3.1.3 ([a6854c1](https://github.com/randomicu/randomicu/commit/a6854c11a9b31032127bdd8d54e7b3ecd6d015fc))
+* **infrastructure:** increase timeout for http client to 2000 ms ([38716b3](https://github.com/randomicu/randomicu/commit/38716b38ae3a71a14efc2adc66b64ca052d4db58))
+
 ### [0.8.2](https://github.com/randomicu/randomicu/compare/0.8.1...0.8.2) (2021-08-10)
 
 
