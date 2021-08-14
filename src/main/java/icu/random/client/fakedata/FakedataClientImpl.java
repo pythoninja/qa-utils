@@ -3,6 +3,7 @@ package icu.random.client.fakedata;
 import icu.random.client.rest.RestClient;
 import icu.random.dto.fakedata.AddressDto;
 import icu.random.dto.fakedata.PersonDto;
+import icu.random.dto.fakedata.UuidDto;
 import icu.random.exception.HttpClientFailureException;
 import java.net.URLDecoder;
 import java.nio.charset.Charset;
@@ -23,12 +24,17 @@ public class FakedataClientImpl implements FakedataClient {
   @Value("${randomicu.fakedata.remote-url}")
   private String fakedataUrl;
 
+  @Value("${randomicu.fakedata.remote-url.locale}")
+  private String fakedataLocale;
+
   @Value("${randomicu.fakedata.remote-url.address-endpoint}")
   private String addressEndpoint;
 
   @Value("${randomicu.fakedata.remote-url.person-endpoint}")
   private String personEndpoint;
 
+  @Value("${randomicu.fakedata.remote-url.uuid-endpoint}")
+  private String uuidEndpoint;
 
   @Autowired
   public FakedataClientImpl(RestClient client) {
@@ -38,7 +44,8 @@ public class FakedataClientImpl implements FakedataClient {
   @Override
   public HttpResponse<AddressDto> getAdress(String language) {
     return this.getResponse(
-        Map.of("locale", language,
+        Map.of(
+            "locale", language,
             "endpoint", addressEndpoint),
         AddressDto.class
     );
@@ -47,14 +54,38 @@ public class FakedataClientImpl implements FakedataClient {
   @Override
   public HttpResponse<PersonDto> getPerson(String language) {
     return this.getResponse(
-        Map.of("locale", language,
+        Map.of(
+            "locale", language,
             "endpoint", personEndpoint),
         PersonDto.class
     );
   }
 
-  private <T> HttpResponse<T> getResponse(Map<String, Object> params, Class<T> clazz) {
-    var request = httpClient.get(fakedataUrl).routeParam(params);
+  @Override
+  public HttpResponse<UuidDto> getUuid(String version, boolean uppercase) {
+    return this.getResponse(
+        Map.of("endpoint", uuidEndpoint),
+        Map.of("uppercase", uppercase),
+        UuidDto.class);
+  }
+
+  private <T> HttpResponse<T> getResponse(Map<String, Object> routeParams, Class<T> clazz) {
+    return getResponse(routeParams, Map.of(), clazz);
+  }
+
+  private <T> HttpResponse<T> getResponse(Map<String, Object> routeParams, Map<String, Object> queryParams, Class<T> clazz) {
+    String realUrl;
+    String endpointPlaceholder = "{endpoint}";
+
+    if (routeParams.containsKey("locale")) {
+      log.debug("Params map contains locale");
+      realUrl = "%s/%s/%s".formatted(fakedataUrl, fakedataLocale, endpointPlaceholder);
+    } else {
+      realUrl = "%s/%s".formatted(fakedataUrl, endpointPlaceholder);
+    }
+
+    log.debug("Raw url before Unirest parse it: {}", realUrl);
+    var request = httpClient.get(realUrl).routeParam(routeParams).queryString(queryParams);
 
     var url = request.getUrl();
     log.info("Prepare request to url: {}", URLDecoder.decode(url, Charset.defaultCharset()));

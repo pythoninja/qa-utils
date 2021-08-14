@@ -15,7 +15,7 @@ public class ApiControllerPaths {
 
   public static final String FAKEDATA_ADDRESS = "/fakedata/{language}/address";
   public static final String FAKEDATA_PERSON = "/fakedata/{language}/person";
-
+  public static final String FAKEDATA_UUID = "/fakedata/uuid";
 
   private ApiControllerPaths() {
     throw new IllegalStateException("Path Constants class should not be used this way");
