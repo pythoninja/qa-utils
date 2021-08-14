@@ -19,6 +19,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class FakedataClientImpl implements FakedataClient {
 
+  public static final String LOCALE_ROUTE_PARAM = "locale";
+  public static final String ENDPOINT_ROUTE_PARAM = "endpoint";
+
   private final RestClient httpClient;
 
   @Value("${randomicu.fakedata.remote-url}")
@@ -45,8 +48,8 @@ public class FakedataClientImpl implements FakedataClient {
   public HttpResponse<AddressDto> getAdress(String language) {
     return this.getResponse(
         Map.of(
-            "locale", language,
-            "endpoint", addressEndpoint),
+            LOCALE_ROUTE_PARAM, language,
+            ENDPOINT_ROUTE_PARAM, addressEndpoint),
         AddressDto.class
     );
   }
@@ -55,8 +58,8 @@ public class FakedataClientImpl implements FakedataClient {
   public HttpResponse<PersonDto> getPerson(String language) {
     return this.getResponse(
         Map.of(
-            "locale", language,
-            "endpoint", personEndpoint),
+            LOCALE_ROUTE_PARAM, language,
+            ENDPOINT_ROUTE_PARAM, personEndpoint),
         PersonDto.class
     );
   }
@@ -64,7 +67,7 @@ public class FakedataClientImpl implements FakedataClient {
   @Override
   public HttpResponse<UuidDto> getUuid(String version, boolean uppercase) {
     return this.getResponse(
-        Map.of("endpoint", uuidEndpoint),
+        Map.of(ENDPOINT_ROUTE_PARAM, uuidEndpoint),
         Map.of("uppercase", uppercase),
         UuidDto.class);
   }
@@ -77,7 +80,7 @@ public class FakedataClientImpl implements FakedataClient {
     String realUrl;
     String endpointPlaceholder = "{endpoint}";
 
-    if (routeParams.containsKey("locale")) {
+    if (routeParams.containsKey(LOCALE_ROUTE_PARAM)) {
       log.debug("Params map contains locale");
       realUrl = "%s/%s/%s".formatted(fakedataUrl, fakedataLocale, endpointPlaceholder);
     } else {
