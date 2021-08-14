@@ -1,4 +1,11 @@
 ## Randomicu Changelog
+### [0.8.4](https://github.com/randomicu/randomicu/compare/0.8.3...0.8.4) (2021-08-14)
+
+
+### Bug Fixes
+
+* clean details map and improve logging ([f2de4a4](https://github.com/randomicu/randomicu/commit/f2de4a443edac43435945721aae966b5f1d5a05b))
+
 ### [0.8.3](https://github.com/randomicu/randomicu/compare/0.8.2...0.8.3) (2021-08-14)
 
 
