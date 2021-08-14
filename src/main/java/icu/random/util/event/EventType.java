@@ -11,5 +11,6 @@ public enum EventType {
   lorem_words,
   lorem_paragraphs,
   lorem_paragraphs_break,
-  lorem_lists
+  lorem_lists,
+  uuid
 }

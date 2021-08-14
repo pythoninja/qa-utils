@@ -3,6 +3,7 @@ package icu.random.service;
 import icu.random.client.fakedata.FakedataClient;
 import icu.random.dto.fakedata.AddressDto;
 import icu.random.dto.fakedata.PersonDto;
+import icu.random.dto.fakedata.UuidDto;
 import icu.random.exception.IncorrectLanguageException;
 import java.util.Set;
 import kong.unirest.HttpResponse;
@@ -32,6 +33,11 @@ public class FakedataServiceImpl implements FakedataService {
     this.checkLanguage(language);
 
     return this.client.getPerson(language);
+  }
+
+  @Override
+  public HttpResponse<UuidDto> getUuid(String version, boolean uppercase) {
+    return this.client.getUuid(version, uppercase);
   }
 
   private void checkLanguage(String language) {
