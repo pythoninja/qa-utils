@@ -6,6 +6,7 @@ import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
+import kong.unirest.Unirest;
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,7 @@ public class FakedataHealthIndicator implements HealthIndicator {
   private final RestClient restClient;
 
   private final Map<String, String> details = new HashMap<>();
+  private final int unirestConnectionTimeout = Unirest.config().getConnectionTimeout();
 
   @Autowired
   public FakedataHealthIndicator(RestClient restClient) {
@@ -51,13 +53,22 @@ public class FakedataHealthIndicator implements HealthIndicator {
     log.debug("Trying to open socket to {}:{}", host, port);
 
     try (var ignored = new Socket(host, port)) {
+      log.debug("Remove error from details map");
+      details.remove("error");
       log.debug("Successully opened socket to {}:{}", host, port);
     } catch (IOException e) {
+      log.debug("Put error message to details map");
       details.put("error", "Can't connect to fakedata backend server");
+
+      log.debug("Remove version from details map");
+      details.remove("version");
+
       log.error("Failed to open socket to {}:{}", host, port);
       return false;
     }
 
+    log.info("Fetching version from fakedata-backend...");
+    log.info("Unirest connection timeout (ms): {}", unirestConnectionTimeout);
     var response = restClient.get(
         String.format("http://%s:%s/%s", host, port, healthcheck)
     ).asString();
