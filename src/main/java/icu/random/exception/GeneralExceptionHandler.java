@@ -1,6 +1,7 @@
 package icu.random.exception;
 
 import java.util.Objects;
+import kong.unirest.UnirestException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.HttpMediaTypeNotAcceptableException;
@@ -80,4 +81,19 @@ public class GeneralExceptionHandler {
 
     return new ResponseEntity<>(response, status);
   }
+
+  @ExceptionHandler(UnirestException.class)
+  public ResponseEntity<GeneralException> handleUnirestException(UnirestException exc) {
+
+    HttpStatus status = HttpStatus.GATEWAY_TIMEOUT;
+
+    GeneralException response = new GeneralException(
+        status.value(),
+        "Backend is in down.",
+        System.currentTimeMillis()
+    );
+
+    return new ResponseEntity<>(response, status);
+  }
+
 }

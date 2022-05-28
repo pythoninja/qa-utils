@@ -2,11 +2,14 @@ package icu.random.util.healthcheck;
 
 import icu.random.client.rest.RestClient;
 import java.io.IOException;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
+import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
+import kong.unirest.UnirestException;
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +24,7 @@ public class FakedataHealthIndicator implements HealthIndicator {
 
   @Value("${randomicu.fakedata.host}")
   private String host;
-  
+
   @Value("${randomicu.fakedata.port}")
   private Integer port;
 
@@ -52,13 +55,15 @@ public class FakedataHealthIndicator implements HealthIndicator {
   private Boolean isRunning() {
     log.debug("Trying to open socket to {}:{}", host, port);
 
-    try (var ignored = new Socket(host, port)) {
+    try (Socket socket = new Socket()) {
+      socket.connect(new InetSocketAddress(host, port), 300);
+
       log.debug("Remove error from details map");
       details.remove("error");
       log.debug("Successully opened socket to {}:{}", host, port);
     } catch (IOException e) {
       log.debug("Put error message to details map");
-      details.put("error", "Can't connect to fakedata backend server");
+      details.put("error", "Can't connect to the fakedata-backend server");
 
       log.debug("Remove version from details map");
       details.remove("version");
@@ -69,9 +74,20 @@ public class FakedataHealthIndicator implements HealthIndicator {
 
     log.info("Fetching version from fakedata-backend...");
     log.info("Unirest connection timeout (ms): {}", unirestConnectionTimeout);
-    var response = restClient.get(
-        String.format("http://%s:%s/%s", host, port, healthcheck)
-    ).asString();
+
+    HttpResponse<String> response;
+
+    try {
+      if (details.containsKey("error")) {
+        log.debug("Remove error from details map");
+        details.remove("error");
+      }
+      response = restClient.get(String.format("http://%s:%s/%s", host, port, healthcheck)).asString();
+    } catch (UnirestException exc) {
+      details.put("error", "fakedata-backend is in down");
+      log.error("fakedata-backend is in down");
+      return false;
+    }
 
     var statusCode = response.getStatus();
     var body = response.getBody();
