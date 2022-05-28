@@ -1,4 +1,11 @@
 ## Randomicu Changelog
+### [0.9.1](https://github.com/randomicu/randomicu/compare/0.9.0...0.9.1) (2022-05-28)
+
+
+### Bug Fixes
+
+* **actuator:** additional info for production ([c97436a](https://github.com/randomicu/randomicu/commit/c97436a79cabf56dcf5feb6f57af26764f8a8650))
+
 ## [0.9.0](https://github.com/randomicu/randomicu/compare/0.8.5...0.9.0) (2022-05-28)
 
 

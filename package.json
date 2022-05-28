@@ -1,6 +1,6 @@
 {
   "name": "randomicu-frontend",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "Frontend part for random.icu - Free fake data generator for QA purposes",
   "dependencies": {
     "purecss": "^2.1.0"
