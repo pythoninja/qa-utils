@@ -74,9 +74,20 @@ public class FakedataHealthIndicator implements HealthIndicator {
 
     log.info("Fetching version from fakedata-backend...");
     log.info("Unirest connection timeout (ms): {}", unirestConnectionTimeout);
-    var response = restClient.get(
-        String.format("http://%s:%s/%s", host, port, healthcheck)
-    ).asString();
+
+    HttpResponse<String> response;
+
+    try {
+      if (details.containsKey("error")) {
+        log.debug("Remove error from details map");
+        details.remove("error");
+      }
+      response = restClient.get(String.format("http://%s:%s/%s", host, port, healthcheck)).asString();
+    } catch (UnirestException exc) {
+      details.put("error", "fakedata-backend is in down");
+      log.error("fakedata-backend is in down");
+      return false;
+    }
 
     var statusCode = response.getStatus();
     var body = response.getBody();
