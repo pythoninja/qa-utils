@@ -31,7 +31,7 @@
     {
       "type": "chore",
       "section": "Other",
-      "hidden": false
+      "hidden": true
     }
   ],
   "header": "## Randomicu Changelog"
