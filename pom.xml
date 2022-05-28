@@ -13,7 +13,7 @@
     <artifactId>randomicu</artifactId>
     <version>0.0.0</version>
     <name>randomicu</name>
-    <description>Public API for QA</description>
+    <description>Free API for QA Engineers</description>
 
     <properties>
         <java.version>18</java.version>
