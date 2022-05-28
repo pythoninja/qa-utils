@@ -16,7 +16,7 @@
     <description>Public API for QA</description>
 
     <properties>
-        <java.version>16</java.version>
+        <java.version>18</java.version>
         <version.number>${git.closest.tag.name}-local</version.number>
         <sonar.projectKey>randomicu_randomicu</sonar.projectKey>
         <sonar.organization>randomicu</sonar.organization>
