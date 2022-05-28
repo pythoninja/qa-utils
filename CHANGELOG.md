@@ -1,4 +1,19 @@
 ## Randomicu Changelog
+## [0.9.0](https://github.com/randomicu/randomicu/compare/0.8.5...0.9.0) (2022-05-28)
+
+
+### Features
+
+* **actuator:** add additional app info ([8abb368](https://github.com/randomicu/randomicu/commit/8abb368711e8ba72195a49e28462ee5ea0cd2609))
+
+
+### Refactoring
+
+* handle SocketTimeoutException ([2c2b7d2](https://github.com/randomicu/randomicu/commit/2c2b7d234cd87ddb43a440cc40db31f3dc087da0)), closes [#221](https://github.com/randomicu/randomicu/issues/221)
+* handle UnirestException ([712093b](https://github.com/randomicu/randomicu/commit/712093b25e837cd2cd07aa3a86680f5ad56ed9ca)), closes [#260](https://github.com/randomicu/randomicu/issues/260)
+* map postgres enum to hibernate enum ([73e8f1d](https://github.com/randomicu/randomicu/commit/73e8f1d5affedb108190e37f787e15823354b478)), closes [#256](https://github.com/randomicu/randomicu/issues/256)
+* reduce socket timeout ([53d1d93](https://github.com/randomicu/randomicu/commit/53d1d939f402f2f425d2fd16904eafd8d7055016))
+
 ### [0.8.5](https://github.com/randomicu/randomicu/compare/0.8.4...0.8.5) (2022-05-28)
 
 
