@@ -1,5 +1,6 @@
 package icu.random.entity;
 
+import icu.random.entity.type.PostgreSQLEventEnumType;
 import icu.random.util.event.EventType;
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -16,8 +17,11 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
 
 @Entity(name = "Event")
+@TypeDef(name = "event_type_enum", typeClass = PostgreSQLEventEnumType.class)
 @Getter
 @Setter
 @ToString
@@ -38,6 +42,7 @@ public class Event {
 
   @Enumerated(EnumType.STRING)
   @Column(name = "event_type")
+  @Type(type = "event_type_enum")
   private EventType eventType;
 
   public Event(LocalDateTime createdAt, String language, EventType eventType) {
