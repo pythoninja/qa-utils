@@ -26,11 +26,11 @@ public class FakedataController {
 
   @GetMapping(value = FAKEDATA_ADDRESS)
   public AddressDto address(@PathVariable() String language ) {
-    return fakedataService.getAddress(language).getBody();
+    return fakedataService.getAddress(language);
   }
 
   @GetMapping(value = FAKEDATA_PERSON)
   public PersonDto person(@PathVariable() String language ) {
-    return fakedataService.getPerson(language).getBody();
+    return fakedataService.getPerson(language);
   }
 }

@@ -6,7 +6,6 @@ import icu.random.dto.fakedata.PersonDto;
 import icu.random.dto.fakedata.UuidDto;
 import icu.random.exception.IncorrectLanguageException;
 import java.util.Set;
-import kong.unirest.HttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,22 +21,22 @@ public class FakedataServiceImpl implements FakedataService {
   }
 
   @Override
-  public HttpResponse<AddressDto> getAddress(String language) {
+  public AddressDto getAddress(String language) {
     this.checkLanguage(language);
 
-    return this.client.getAdress(language);
+    return this.client.getAdress(language).getBody();
   }
 
   @Override
-  public HttpResponse<PersonDto> getPerson(String language) {
+  public PersonDto getPerson(String language) {
     this.checkLanguage(language);
 
-    return this.client.getPerson(language);
+    return this.client.getPerson(language).getBody();
   }
 
   @Override
-  public HttpResponse<UuidDto> getUuid(String version, boolean uppercase) {
-    return this.client.getUuid(version, uppercase);
+  public UuidDto getUuid(String version, boolean uppercase) {
+    return this.client.getUuid(version, uppercase).getBody();
   }
 
   private void checkLanguage(String language) {

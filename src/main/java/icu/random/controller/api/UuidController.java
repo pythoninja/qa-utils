@@ -26,6 +26,6 @@ public class UuidController {
   public UuidDto uuid(@RequestParam(required = false) boolean uppercase,
                       @RequestParam(required = false, defaultValue = "4") String version) {
 
-    return fakedataService.getUuid(version,uppercase).getBody();
+    return fakedataService.getUuid(version,uppercase);
   }
 }
