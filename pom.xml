@@ -104,7 +104,7 @@
                 <version>3.2.1</version>
                 <configuration>
                     <from>
-                        <image>adoptopenjdk:16-jre@sha256:acc99f88a18a9954da4f9605c715d907c41fe5648e270ed0f77c2a0459f55931</image>
+                        <image>eclipse-temurin:18-jre@sha256:988d69b456f9e9539ff8c65abbcd8af41413d50b79a63a825b3f812fe0189aa5</image>
                     </from>
                     <to>
                         <image>docker.io/pythoninja/randomicu</image>
