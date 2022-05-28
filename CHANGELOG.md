@@ -1,4 +1,13 @@
 ## Randomicu Changelog
+### [0.8.5](https://github.com/randomicu/randomicu/compare/0.8.4...0.8.5) (2022-05-28)
+
+
+### Refactoring
+
+* **frontend:** change index title ([5b39089](https://github.com/randomicu/randomicu/commit/5b39089b1e812c3947a5b0e76874b414d2299cf8))
+* image build with java 18 ([08612b6](https://github.com/randomicu/randomicu/commit/08612b611192a65f6142e58c37cb49648c96463e))
+* return dto instead of HttpResponse ([bc2b278](https://github.com/randomicu/randomicu/commit/bc2b27818c050123f7e971f40e4e32d0c37e355b)), closes [#223](https://github.com/randomicu/randomicu/issues/223)
+
 ### [0.8.4](https://github.com/randomicu/randomicu/compare/0.8.3...0.8.4) (2021-08-14)
 
 
