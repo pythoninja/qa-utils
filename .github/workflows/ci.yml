@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+env:
+  POSTGRES_SERVER: localhost
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: password
+  POSTGRES_DB: fakedata_test
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    
+    services:
+      postgres:
+        image: postgres:13-alpine
+        env:
+          POSTGRES_SERVER: ${{env.POSTGRES_SERVER}}
+          POSTGRES_USER: ${{env.POSTGRES_USER}}
+          POSTGRES_PASSWORD: ${{env.POSTGRES_PASSWORD}}
+          POSTGRES_DB: ${{env.POSTGRES_DB}}
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up JDK 18
+      uses: actions/setup-java@v3
+      with:
+        java-version: '18'
+        distribution: 'temurin'
+        cache: maven
+    
+    - name: Run database migration
+      env:
+        FAKEDATA_DATABASE_URL: postgresql://${{env.POSTGRES_USER}}:${{env.POSTGRES_PASSWORD}}@${{env.POSTGRES_SERVER}}:5432/${{env.POSTGRES_DB}}
+      run: docker run --network host --rm --env "FAKEDATA_DATABASE_URL=${{env.FAKEDATA_DATABASE_URL}}" ghcr.io/randomicu/fakedata-database:latest
+      
+    - name: Run tests
+      run: mvn --batch-mode --file pom.xml -Dspring.profiles.active=test,ci test
